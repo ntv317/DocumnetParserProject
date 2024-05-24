@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumnetParserProject", "DocumnetParserProject\DocumnetParserProject.csproj", "{05367AFB-7CEA-4A04-A619-E00EA731BAFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{A105C290-4369-43D5-9C95-92D83C07267C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{6736C583-575D-45C2-B846-0409A18FABAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05367AFB-7CEA-4A04-A619-E00EA731BAFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05367AFB-7CEA-4A04-A619-E00EA731BAFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05367AFB-7CEA-4A04-A619-E00EA731BAFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05367AFB-7CEA-4A04-A619-E00EA731BAFA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6736C583-575D-45C2-B846-0409A18FABAE} = {A105C290-4369-43D5-9C95-92D83C07267C}
+	EndGlobalSection
+EndGlobal
