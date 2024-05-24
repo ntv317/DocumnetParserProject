@@ -1,7 +1,15 @@
+using Database.Models.Enums;
+using DocumnetParserProject.Registers;
+using Services.ParserServices.Imps;
+using Services.ParserServices.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+ParserRegisters.Registrate(builder.Services);
+RegisterSerivces.Registrate(builder.Services);
 
 var app = builder.Build();
 
