@@ -1,0 +1,98 @@
+﻿<div class="container">
+	
+	<form id="filterForm">
+		<div class="row">
+			<div class="form-group col-3">
+				<label for="CurrencyCode">Currency</label>
+				<select class="js-example-basic-single col-4 form-control" id="CurrencyCode">
+					<option value=""></option>
+				</select>
+			</div>
+			<div class="form-group col-3">
+				<label for="Status">Status</label>
+				<select class="select2 form-control" id="Status">
+					<option value=""></option>
+					<option value="0">A</option>
+					<option value="1">R</option>
+					<option value="2">D</option>
+				</select>
+			</div>
+			<div class="form-group col-3">
+				<label for="From">From</label>
+				<input class="form-control" type="date" id="From">
+			</div>
+			<div class="form-group col-3">
+				<label for="To">To</label>
+				<input class="form-control" type="date" id="To">
+			</div>
+			
+		</div>
+		
+	</form>
+	<div class="row" style="padding-top: 30px;">
+		<div class="form-group col-3">
+			<button class="form-control btn btn-primary" id="search">Search</button>
+		</div>
+	</div>
+	<div class="row" style="padding-top: 30px;">
+		<table id="example" class="display" style="width:100%">
+			<thead>
+			<tr>
+				<th>ID</th>
+				<th>Payment</th>
+				<th>Status</th>
+			</tr>
+			</thead>
+		</table>
+	</div>
+
+</div>
+@section Scripts
+{
+	<script>
+	
+	$('.js-example-basic-single').select2({
+      ajax: {
+        url: '@Url.Action("CurrencyList", "DropdownList")',
+        dataType: 'json',
+        processResults: function (data) {
+                          return {
+                              results: $.map(data, function (item) {
+                                  return {
+                                      text: item.text,
+                                      id: item.id
+                                  }
+                              })
+                          };
+                      }
+      },
+      
+    });
+	var tb = $('#example').DataTable({
+                 ajax: 
+                 { 
+					 url:'@Url.Action("GetList", "Home")',
+					 data: function (d){
+                     					 d.operationStatus = $("#Status").val();
+										 d.from = $("#From").val();
+										 d.to = $("#To").val();
+										 d.currencyCode = $("#CurrencyCode").val();
+                     				 }
+				 },
+				 
+                 processing: true,
+                 serverSide: true, 
+                 ordering: false,
+                 searching: false,
+                 columns:
+                 [
+						 {data : "id"},
+						 {data : "payment"},
+						 {data : "status"}
+                 ]  
+             });
+	$("#search").click(function (){
+    		tb.draw();
+    	});
+	</script>
+}

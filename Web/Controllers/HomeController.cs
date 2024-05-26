@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Database.ModelFilter;
 using Microsoft.AspNetCore.Mvc;
 using DocumnetParserProject.Models;
+using Services.Common.Interfaces;
 using Services.TransactionServices.Interfaces;
 
 namespace DocumnetParserProject.Controllers;
@@ -9,9 +10,11 @@ namespace DocumnetParserProject.Controllers;
 public class HomeController : Controller
 {
     private readonly ITransactionService _transactionService;
+    
     public HomeController(ITransactionService transactionService)
     {
         _transactionService = transactionService;
+        
     }
     public IActionResult Index()
     {
@@ -31,7 +34,7 @@ public class HomeController : Controller
         return Json(res);
     }
     
-    public async Task<IActionResult> Privacy()
+    public async Task<IActionResult> Operation()
     {
         return View();
     }

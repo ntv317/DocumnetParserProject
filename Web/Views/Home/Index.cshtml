@@ -3,10 +3,17 @@
 }
 
 <div class="text-center">
-    <form id="data" method="post" enctype="multipart/form-data">
-        <input id="FileName" type="file" />
-    </form>
-    <button id="btnSubmit">Submit</button>
+    <div class="container">
+        <div class="row">
+             <form id="data" method="post" enctype="multipart/form-data">
+                    <label for="FileName" class="form-label"></label>
+                    <input class="form-control" type="file" id="FileName">
+                </form>
+        </div>
+        <div class="row">
+            <button style="margin: 12px" class="btn btn-primary col-4" id="btnSubmit">Upload</button>
+        </div>
+    </div>
 </div>
 
 @section Scripts{

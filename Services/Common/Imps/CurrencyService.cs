@@ -28,9 +28,20 @@ public class CurrencyService:ICurrencyService
                     return null;
                 }
             })
+            .Where(ri => ri!=null)
             .Select(ri => ri.ISOCurrencySymbol.ToUpper())
             .OrderDescending()
             .ToHashSet();
         return currencies;
+    }
+
+    public List<DropdownList<string>> GetDropdownList(string query)
+    {
+        return GetCurrencyIsoList()
+                .AsEnumerable()
+                .WhereIf(!string.IsNullOrEmpty(query),x=>x.Contains(query, StringComparison.InvariantCultureIgnoreCase))
+                .Select(x => new DropdownList<string>(){Id = x, Text = x})
+                .ToList();
+        
     }
 }
