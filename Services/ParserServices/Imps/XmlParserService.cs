@@ -10,11 +10,11 @@ namespace Services.ParserServices.Imps;
 
 public class XmlParserService:IParserService
 {
-    private readonly IValidateValueService _validateValueService;
+    private readonly ICurrencyService _currencyService;
 
-    public XmlParserService(IValidateValueService validateValueService)
+    public XmlParserService(ICurrencyService currencyService)
     {
-        _validateValueService = validateValueService;
+        _currencyService = currencyService;
     }
     public async Task<ICollection<Operation>> Parse(IFormFile file)
     {
@@ -44,7 +44,7 @@ public class XmlParserService:IParserService
                 {
                     throw new Exception($"CurrencyCode is null");
                 }
-                if (!_validateValueService.ValidateCurrency(res.PaymentDetails.CurrencyCode))
+                if (!_currencyService.ValidateCurrency(res.PaymentDetails.CurrencyCode))
                 {
                     throw new Exception("Currency format is not correct");
                 }

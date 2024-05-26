@@ -1,0 +1,45 @@
+﻿<div class="row">
+	<div class="col-2">
+		< />
+	</div>
+	<div class="col-2">
+		
+	</div>
+	<div class="col-2">
+		
+	</div>
+</div>
+<div class="row">
+	
+	<table id="example" class="display" style="width:100%">
+		<thead>
+		<tr>
+			<th>ID</th>
+			<th>Payment</th>
+			<th>Status</th>
+		</tr>
+		</thead>
+	</table>
+</div>
+
+@section Scripts
+{
+	<script>
+	var tb = $('#example').DataTable({
+                 ajax: 
+                 { 
+					 url:'@Url.Action("GetList", "Home")'
+				 },
+                 processing: true,
+                 serverSide: true, 
+                 ordering: false,
+                 searching: false,
+                 columns:
+                 [
+						 {data : "id"},
+						 {data : "payment"},
+						 {data : "status"}
+                 ]  
+             });
+	</script>
+}

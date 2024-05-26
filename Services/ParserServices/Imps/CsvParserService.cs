@@ -10,11 +10,11 @@ namespace Services.ParserServices.Imps;
 
 public class CsvParserService:IParserService
 {
-    private readonly IValidateValueService _validateValueService;
+    private readonly ICurrencyService _currencyService;
 
-    public CsvParserService(IValidateValueService validateValueService)
+    public CsvParserService(ICurrencyService currencyService)
     {
-        _validateValueService = validateValueService;
+        _currencyService = currencyService;
     }
     public async Task<ICollection<Operation>> Parse(IFormFile file)
     {
@@ -33,7 +33,7 @@ public class CsvParserService:IParserService
                 }
                 var id = fields[0];
                 var amount = fields[1].ParseToDecimal();
-                if (!_validateValueService.ValidateCurrency(fields[2]))
+                if (!_currencyService.ValidateCurrency(fields[2]))
                 {
                     throw new Exception($"This raw contain not valid currency. {fields}");
                 }

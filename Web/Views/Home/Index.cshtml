@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <form id="data" method="post" enctype="multipart/form-data">
+        <input id="FileName" type="file" />
+    </form>
+    <button id="btnSubmit">Submit</button>
+</div>
+
+@section Scripts{
+    <script>
+        $("#btnSubmit").click(function(e) {
+            var formData = new FormData(document.forms.item(0));
+            let file = $('#FileName').prop("files")[0];
+            formData.append('file', file);
+             e.preventDefault();
+            $.ajax({
+                url:"@Url.Action("Upload", "Home")",
+                type: 'POST',
+                   data: formData,
+                   cache: false,
+                   contentType: false,
+                   processData: false,
+                   success: (res) => {
+                      alert("Uploaded")
+                      $('#FileName').val("")
+                   },
+                   error:(res)=>{
+                      alert(res.responseJSON.title)
+                        $('#FileName').val("")
+                    }
+            });
+        });
+    </script>
+}

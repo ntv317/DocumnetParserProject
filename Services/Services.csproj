@@ -7,11 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="TransactionServices\Imps\" />
-      <Folder Include="TransactionServices\Interfaces\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Database\Database.csproj" />
     </ItemGroup>
 
